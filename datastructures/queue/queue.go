@@ -11,8 +11,8 @@ type Queue struct {
 }
 
 // Create an empty queue
-func Create() Queue {
-	return Queue{linkedlist.Create()}
+func Create() *Queue {
+	return &Queue{linkedlist.Create()}
 }
 
 // Queue adds new element to tail of queue
