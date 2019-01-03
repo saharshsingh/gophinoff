@@ -39,8 +39,8 @@ func (list *LinkedList) Insert(value interface{}, offset uint64, fromBack bool) 
 
 	if offset == uint64(0) && list.size == 0 {
 
-		node := &node{value, nil, nil}
-		list.head, node.prev, node.next = node, node, node
+		list.head = &node{value, nil, nil}
+		list.head.prev, list.head.next = list.head, list.head
 		list.size = 1
 
 	} else {
