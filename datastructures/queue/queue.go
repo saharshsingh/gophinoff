@@ -28,8 +28,8 @@ func (queue *Queue) Peek() interface{} {
 	return queue.doublyLinkedList.Get(0, false)
 }
 
-// Deque removes and returns the top of queue
-func (queue *Queue) Deque() interface{} {
+// Dequeue removes and returns the top of queue
+func (queue *Queue) Dequeue() interface{} {
 	if queue.Size() < 1 {
 		return nil
 	}
