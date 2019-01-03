@@ -23,7 +23,7 @@ func (list *LinkedList) Size() uint64 {
 // ReversibleIterator is an iterator that can be optionally configured to start from tail and iterate backwards
 func (list *LinkedList) ReversibleIterator(flipped bool) datastructures.Iterator {
 	head := list.head
-	if flipped {
+	if flipped && head != nil {
 		head = head.prev
 	}
 	return &linkedListIterator{head, head, flipped}
