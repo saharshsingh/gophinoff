@@ -80,6 +80,40 @@ func TestIteratorNextForConcurrentModification(t *testing.T) {
 
 }
 
+func TestAddAndGet(t *testing.T) {
+
+	list := linkedlist.Create()
+	proceed := make(chan int)
+	done := make(chan bool)
+	iterations := 100
+
+	add := func() {
+		for i := 1; i <= iterations; i++ {
+			list.Add(i)
+			proceed <- i
+
+			received := <-proceed
+			testutils.AssertEquals("Expected to receive what was sent", i, received, t)
+		}
+		done <- true
+	}
+
+	get := func() {
+		for i := 0; i < iterations; i++ {
+			received := <-proceed
+			retreived := list.Get(uint64(i), false)
+			testutils.AssertEquals("Expected to retrieve what was received", received, retreived, t)
+			proceed <- retreived.(int)
+		}
+	}
+
+	go get()
+	go add()
+
+	<-done
+	testutils.AssertEquals("Expected size of list to equal number of iterations", uint64(iterations), list.Size(), t)
+}
+
 func TestConcurrentGetAndDelete(t *testing.T) {
 
 	list := CreateConcurrentList()
