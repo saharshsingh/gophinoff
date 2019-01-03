@@ -11,8 +11,8 @@ type Queue struct {
 }
 
 // Create an empty queue
-func Create() Queue {
-	return Queue{linkedlist.Create()}
+func Create() *Queue {
+	return &Queue{linkedlist.Create()}
 }
 
 // Queue adds new element to tail of queue
@@ -28,8 +28,8 @@ func (queue *Queue) Peek() interface{} {
 	return queue.doublyLinkedList.Get(0, false)
 }
 
-// Deque removes and returns the top of queue
-func (queue *Queue) Deque() interface{} {
+// Dequeue removes and returns the top of queue
+func (queue *Queue) Dequeue() interface{} {
 	if queue.Size() < 1 {
 		return nil
 	}

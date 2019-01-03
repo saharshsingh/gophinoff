@@ -11,8 +11,8 @@ type Stack struct {
 }
 
 // Create an empty stack
-func Create() Stack {
-	return Stack{linkedlist.Create()}
+func Create() *Stack {
+	return &Stack{linkedlist.Create()}
 }
 
 // Push adds new element to head of stack

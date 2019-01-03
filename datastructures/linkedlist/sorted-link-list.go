@@ -13,7 +13,7 @@ import (
 // 	- int
 // 	- string
 func CreateSorted() datastructures.LinkedList {
-	return &sortedLinkedList{&LinkedList{nil, 0}}
+	return &sortedLinkedList{Create()}
 }
 
 // Add inserts value in the list at correct position based on natural order
@@ -72,7 +72,7 @@ func createComparable(value interface{}) *comparable {
 		return &comparable{_Comparable}
 	}
 
-	panic(fmt.Sprintf("Must be int, string, or local.datastructures.linkedlist.Comparable"))
+	panic(fmt.Sprintf("Must be int, string, or github.com/saharshsingh/gophinoff/datastructures.Comparable"))
 }
 
 type comparable struct {

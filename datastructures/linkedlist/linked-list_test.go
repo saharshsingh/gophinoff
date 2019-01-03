@@ -20,6 +20,10 @@ func TestSatisfiesLinkedListInterface(t *testing.T) {
 	testutils.AssertEquals("Expected Size() to be 0", uint64(0), list.Size(), t)
 }
 
+func TestIteratorWhenEmpty(t *testing.T) {
+	testutils.AssertFalse("Expected iterator to be empty", Create().Iterator().HasNext(), t)
+}
+
 func TestIterator(t *testing.T) {
 
 	list := Create()
@@ -43,6 +47,15 @@ func TestIterator(t *testing.T) {
 	testutils.AssertEquals("Expected 'Four'", "Four", iterator.Next(), t)
 
 	testutils.AssertFalse("HasNext() should return false after traversing all elements", iterator.HasNext(), t)
+}
+
+func TestReversibleIteratorWhenEmpty(t *testing.T) {
+
+	// normal iterator
+	testutils.AssertFalse("Expected iterator to be empty", Create().ReversibleIterator(false).HasNext(), t)
+
+	// reverse iterator
+	testutils.AssertFalse("Expected flipped iterator to be empty", Create().ReversibleIterator(true).HasNext(), t)
 }
 
 func TestReversibleIterator(t *testing.T) {
