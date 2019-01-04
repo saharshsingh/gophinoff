@@ -14,12 +14,12 @@ type LinkedList struct {
 	numberOfUpdates uint64
 }
 
-// CreateConcurrentList a thread safe linked list
+// CreateConcurrentList creates a thread safe linked list
 func CreateConcurrentList() *LinkedList {
 	return WrapWithConcurrentList(linkedlist.Create())
 }
 
-// WrapWithConcurrentList a thread safe list implementation around provided list
+// WrapWithConcurrentList wraps a thread safe list implementation around provided list
 func WrapWithConcurrentList(list datastructures.LinkedList) *LinkedList {
 	return &LinkedList{list, &sync.RWMutex{}, 0}
 }

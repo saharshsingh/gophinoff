@@ -32,7 +32,7 @@ func TestConcurrentIterators(t *testing.T) {
 	batchSize := 1000
 	insertConcurrently(list, batchSize)
 
-	testutils.AssertEquals("Expected Size() at end to be '800000'", uint64(8*batchSize), list.Size(), t)
+	testutils.AssertEquals("Expected Size() at end to be '8000'", uint64(8*batchSize), list.Size(), t)
 
 	iterator := list.Iterator()
 	iterationCount := 0
