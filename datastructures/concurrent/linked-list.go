@@ -7,7 +7,7 @@ import (
 	"github.com/saharshsingh/gophinoff/datastructures/linkedlist"
 )
 
-// LinkedList is a thread safe implementation of local.datastructures.LinkedList
+// LinkedList is a thread safe implementation of datastructures.LinkedList
 type LinkedList struct {
 	innerList       datastructures.LinkedList
 	lock            *sync.RWMutex
