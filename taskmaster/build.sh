@@ -34,7 +34,7 @@ if [ $USE_BUILDAH -eq 1 ]; then
     tm_container=$(buildah from scratch)
     buildah copy $tm_container taskmaster /
     buildah config --port 8080 --entrypoint '["/taskmaster"]' --label "maintainer=Saharsh Singh" $tm_container
-    buildah commit $tm_container saharsh/taskmaster
+    buildah commit $tm_container saharshsingh/taskmaster
 else
-    docker build -t saharsh/taskmaster $SCRIPT_DIR
+    docker build -t saharshsingh/taskmaster $SCRIPT_DIR
 fi
