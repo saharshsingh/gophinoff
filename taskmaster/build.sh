@@ -27,7 +27,7 @@ trap cleanup EXIT INT TERM
 go test ./...
 
 # Build Go binary
-time CGO_ENABLED=0 go build
+time GOOS=linux CGO_ENABLED=0 go build
 
 # Build container
 if [ $USE_BUILDAH -eq 1 ]; then
